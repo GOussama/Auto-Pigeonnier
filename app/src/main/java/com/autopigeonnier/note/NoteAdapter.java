@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.example.GetStartedWithData.R;
 
@@ -46,11 +47,14 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
 		row.setTag(currentItem);
 
-		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
-		checkBox.setText(currentItem.getmTitle());
-		checkBox.setChecked(false);
-		checkBox.setEnabled(true);
+		//final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
+		final TextView itemview = (TextView) row.findViewById(R.id.checkToDoItem);
+		//checkBox.setText(currentItem.getmTitle());
+		itemview.setText(currentItem.getmTitle());
+		//checkBox.setChecked(false);
+		//checkBox.setEnabled(true);
 
+		/*
 		checkBox.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -63,6 +67,20 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 					}
 				}
 			}
+		});
+		*/
+		itemview.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				if (mContext instanceof NoteActivity) {
+					NoteActivity activity = (NoteActivity) mContext;
+					activity.checkItem(currentItem);
+				}
+
+			}
+
+
 		});
 
 

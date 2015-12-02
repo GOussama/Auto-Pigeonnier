@@ -5,22 +5,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/red"
     tools:context="com.autopigeonnier.auth.AuthActivity">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in"
+        android:text="Connexion"
         android:id="@+id/signin"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:background="@color/yellow"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:layout_marginBottom="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Email"
         android:ems="10"
         android:id="@+id/email"
         android:layout_above="@+id/password"
@@ -36,7 +42,8 @@
         android:layout_above="@+id/signin"
         android:layout_alignLeft="@+id/email"
         android:layout_alignStart="@+id/email"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp" />
 
 
     <Button
@@ -44,8 +51,48 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/register"
-        android:layout_alignBottom="@+id/signin"
-        android:layout_alignRight="@+id/password"
-        android:layout_alignEnd="@+id/password" />
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/textView3"
+        android:layout_toStartOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pigeonnier Automatique"
+        android:textColor="@color/yellow"
+        android:id="@+id/textView"
+        android:layout_marginTop="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nom d&apos;utilisateur"
+        android:textColor="@color/yellow"
+        android:id="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/email"
+        android:layout_margin="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Mot de passe"
+        android:textColor="@color/yellow"
+        android:id="@+id/textView3"
+        android:layout_above="@+id/password"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

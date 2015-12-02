@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+
 import com.example.GetStartedWithData.R;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -25,7 +26,6 @@ import java.net.MalformedURLException;
 
 
 public class NoteActivity extends Activity {
-
 
     //	TODO Uncomment these lines to create references to the mobile service client and table
     private MobileServiceClient mClient;
@@ -47,7 +47,6 @@ public class NoteActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-
         mProgressBar = (ProgressBar) findViewById(R.id.loadingProgressBar);
         // Initialize the progress bar
         mProgressBar.setVisibility(ProgressBar.GONE);
@@ -67,13 +66,11 @@ public class NoteActivity extends Activity {
             createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
         }
 
-        //mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
-
+        // mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
         // Create an adapter to bind the items with the view
-        mAdapter = new NoteAdapter(this, R.layout.row_list_to_do);
+        mAdapter = new NoteAdapter(this, R.layout.row_list_note);
         ListView listViewNote = (ListView) findViewById(R.id.listViewNote);
         listViewNote.setAdapter(mAdapter);
-
         // Load the items from the Mobile Service
         refreshItemsFromTable();
     }
@@ -110,17 +107,27 @@ public class NoteActivity extends Activity {
 
 //		TODO Uncomment the the following code when using a mobile service
         new AsyncTask<Void, Void, Void>() {
-
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    mNoteTable.update(item).get();
+                    //mNoteTable.update(item).get();
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            //if (item.isComplete()) {
-                              //  mAdapter.remove(item);
+
+                           // if (item.isComplete()) {
+                           // mAdapter.remove(item);
                            // }
                            // refreshItemsFromTable();
+                            /*
+                            Context context = getApplicationContext();
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context,"Why are you Clicking ? :" + item.getmId(), duration);
+                            toast.show();
+                            */
+
+                            Intent intent = new Intent(NoteActivity.this, ShowNoteActivity.class);
+                            intent.putExtra("id",item.getmId());
+                            startActivity(intent);
                         }
                     });
                 } catch (Exception exception) {
@@ -137,7 +144,6 @@ public class NoteActivity extends Activity {
        // }
 //		End of lines to comment out
     }
-
     /**
      * Add a new item
      *
@@ -218,7 +224,6 @@ public class NoteActivity extends Activity {
                 return null;
             }
         }.execute();
-
 //		TODO Comment out these lines to remove the in-memory store
         mAdapter.clear();
 	/*
@@ -227,12 +232,9 @@ public class NoteActivity extends Activity {
 			if (item.isComplete() == false)
 				mAdapter.add(item);
 		}
-
 	*/
 //		End of lines to comment out
-
     }
-
     /**
      * Creates a dialog and shows it
      *
@@ -244,7 +246,6 @@ public class NoteActivity extends Activity {
     private void createAndShowDialog(Exception exception, String title) {
         createAndShowDialog(exception.toString(), title);
     }
-
     /**
      * Creates a dialog and shows it
      *
@@ -276,7 +277,6 @@ public class NoteActivity extends Activity {
                     if (mProgressBar != null) mProgressBar.setVisibility(ProgressBar.VISIBLE);
                 }
             });
-
             SettableFuture<ServiceFilterResponse> result = SettableFuture.create();
             try {
                 ServiceFilterResponse response = next.onNext(request).get();
@@ -284,11 +284,9 @@ public class NoteActivity extends Activity {
             } catch (Exception exc) {
                 result.setException(exc);
             }
-
             dismissProgressBar();
             return result;
         }
-
         private void dismissProgressBar() {
             runOnUiThread(new Runnable() {
 

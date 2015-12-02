@@ -44,12 +44,18 @@ public class MainActivity extends Activity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         switch (position) {
-            case 2:{
+            case 3:{
                 // if this position is to add fragment
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
+                break;
+            }
+            case 2:{
+                // if this position is to add fragment
+                Intent intent = new Intent(MainActivity.this, com.autopigeonnier.temperature.TempActivity.class);
+                startActivity(intent);
                 break;
             }
             case 0:{

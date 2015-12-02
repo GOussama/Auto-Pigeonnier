@@ -57,7 +57,7 @@ public class AuthActivity extends Activity {
                     "https://autopigeonnier.azure-mobile.net/",
                     "iWcdasKsCoNPWBjAnfqQFPMxgDUpYq56",
                     this).withFilter(new ProgressFilter());
-            // Get the Mobile Service Table instance to use
+             // Get the Mobile Service Table instance to use
             mUserTable = mClient.getTable(User.class);
 
         }catch (MalformedURLException e){
@@ -70,13 +70,13 @@ public class AuthActivity extends Activity {
            }
           }
         );
-
         btnsign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     signin();
-                        }
-        });
+            }
+          }
+        );
     }
     public void Register(){
 
@@ -136,7 +136,7 @@ public class AuthActivity extends Activity {
 
                             Context context = getApplicationContext();
                             int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(context,"Your welcome", duration);
+                            Toast toast = Toast.makeText(context,"Your welcome",duration);
                             toast.show();
                             Intent intent = new Intent(AuthActivity.this, com.autopigeonnier.dashboard.MainActivity.class);
                             startActivity(intent);
